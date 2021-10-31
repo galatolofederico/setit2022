@@ -1,0 +1,62 @@
+command: python train.py {args}
+storage: sqlite:////tmp/setit2022.db
+sampler: TPESampler
+pruner: SuccessiveHalvingPruner
+direction: minimize
+replicas: 1
+parameters:
+  lr:
+    distribution: loguniform
+    low: 1e-6
+    high: 1e-1
+  batch-size:
+    distribution: categorical
+    choices:
+      - 8
+      - 16
+      - 32
+  patience:
+    distribution: categorical
+    choices:
+      - 3
+      - 5
+      - 10
+      - 50
+  loss:
+    distribution: categorical
+    choices:
+      - MSELoss
+      - L1Loss
+  features-size:
+    distribution: categorical
+    choices:
+      - 9
+      - 16
+      - 25
+      - 36
+      - 49
+      - 64
+  encoder-l1-channels:
+    distribution: categorical
+    choices:
+      - 5
+      - 10
+      - 20
+  encoder-l2-channels:
+    distribution: categorical
+    choices:
+      - 5
+      - 10
+      - 20
+  decoder-l1-channels:
+    distribution: categorical
+    choices:
+      - 5
+      - 10
+      - 20
+  decoder-l2-channels:
+    distribution: categorical
+    choices:
+      - 5
+      - 10
+      - 20

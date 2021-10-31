@@ -1,0 +1,11 @@
+/env
+__pycache__/
+/dataset
+/dataset.zip
+
+/wandb
+/water-manel
+/models
+/checkpoints
+/plots
+/results
